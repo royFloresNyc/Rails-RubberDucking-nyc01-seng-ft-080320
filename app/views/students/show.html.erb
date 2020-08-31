@@ -1,0 +1,10 @@
+<h1><%= @student.name %></h1>
+<h3>Mod: <%= @student.mod %></h3>
+<h3>Ducks:</h3>
+<ul>
+    <% @student.ducks.each do |duck| %>
+        <li><%= link_to duck.name, duck_path(duck) %></li>
+    <% end %>
+</ul>
+<%= link_to "Edit", edit_student_path %>
+<%= link_to "Students Index", students_path %>

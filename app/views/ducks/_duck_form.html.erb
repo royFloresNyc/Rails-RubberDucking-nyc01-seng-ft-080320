@@ -1,0 +1,26 @@
+<% if flash[:errors] %>
+<h5>Errors: </h5>
+    <% flash[:errors].each do |error| %>
+        <p> - <%= error %></p>
+    <% end %>
+<% end %>
+
+<%= form_for @duck do |f| %>
+    <%= f.label :name %>
+    <%= f.text_field :name %><br><br>
+
+    <%= f.label :description %>
+    <%= f.text_area :description %><br><br>
+
+    <%= f.label :student %>
+    <%= f.fields_for :student_attributes do |student_attribute| %>
+        <%= student_attribute.label :name %>
+        <%= student_attribute.text_field :name %><br><br>
+
+        <%= student_attribute.label :mod %>
+        <%= student_attribute.select :mod, (1..5) %><br><br>
+
+    <% end %>
+
+    <%= f.submit %>
+<% end %>
